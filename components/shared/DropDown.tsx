@@ -20,8 +20,12 @@ import {
 } from "@/components/ui/alert-dialog"
 
 import { ICategory } from "@/lib/database/models/category.model"
-import { startTransition, useState } from "react"
+import { startTransition, useEffect, useState } from "react"
 import { Input } from "../ui/input"
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions"
 
 type DropdownProps = {
   value?: string
@@ -32,8 +36,23 @@ const DropDown = ({ value, onChangeHandler }: DropdownProps) => {
   const [categories, setCategories] = useState<ICategory[]>([])
   const [newCategory, setNewCategory] = useState("")
 
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoryList = await getAllCategories()
+      console.log("---categoryList:", categoryList)
+      categoryList && setCategories(categoryList as ICategory[])
+    }
+
+    getCategories()
+  })
+
   const handleAddCategory = () => {
-    // todo
+    createCategory({
+      categoryName: newCategory.trim(),
+    }).then((category) => {
+      console.log('---action addcategory:', category);
+      setCategories((prevState) => [...prevState, category])
+    })
   }
 
   return (
