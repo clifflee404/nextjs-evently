@@ -44,7 +44,7 @@ const DropDown = ({ value, onChangeHandler }: DropdownProps) => {
     }
 
     getCategories()
-  })
+  }, [])
 
   const handleAddCategory = () => {
     createCategory({
