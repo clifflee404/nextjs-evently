@@ -8,7 +8,7 @@ const CreateEvent = () => {
   const metadata = sessionClaims?.metadata as any;
   const { userId } = metadata
   
-  console.log('---userId :', userId);
+  // console.log('---userId :', userId);
 
   return (
     <>
