@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const page = async ({ params: { id }, searchParams }: SearchParamProps) => {
   const event = await getEventById(id)
-  console.log('---event detail:', event);
+  // console.log('---event detail:', event);
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
@@ -53,11 +53,12 @@ const page = async ({ params: { id }, searchParams }: SearchParamProps) => {
                   width={32}
                   height={32}
                 />
-                <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+                <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center gap-1">
                   <p>
                     {formatDateTime(event.startDateTime).dateOnly} -{" "}
                     {formatDateTime(event.startDateTime).timeOnly}
                   </p>
+                  {" "}
                   <p>
                     {formatDateTime(event.endDateTime).dateOnly} -{" "}
                     {formatDateTime(event.endDateTime).timeOnly}
