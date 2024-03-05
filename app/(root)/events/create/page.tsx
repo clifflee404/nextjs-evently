@@ -5,8 +5,7 @@ import React from 'react'
 const CreateEvent = () => {
   const { sessionClaims } = auth()
 
-  const metadata = sessionClaims?.metadata as any;
-  const { userId } = metadata
+  const userId = sessionClaims?.userId as string;
   
   // console.log('---userId :', userId);
 
