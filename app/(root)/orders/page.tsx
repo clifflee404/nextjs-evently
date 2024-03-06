@@ -7,12 +7,12 @@ import { IOrderItem } from '@/lib/database/models/order.model'
 const Orders = async ({ searchParams }: SearchParamProps) => {
   const eventId = (searchParams?.eventId as string) || ''
   const searchText = (searchParams?.query as string) || ''
-
+  console.log('---searchText:', searchText);
   const orders = await getOrdersByEvent({ eventId, searchString: searchText })
 
   return (
     <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <h3 className="wrapper h3-bold text-center sm:text-left ">Orders</h3>
       </section>
 
